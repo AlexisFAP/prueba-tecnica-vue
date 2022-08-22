@@ -1,7 +1,6 @@
 const userModel = require('../model/user.model.js');
 
 const multer = require('multer')
-const {v4: uuidv4, v4 } = require('uuid')
 
 const getItems = async (req, res) => {
     try {
@@ -16,8 +15,6 @@ const getItems = async (req, res) => {
 const createItem = async (req, res) => {
     try {
         const body = req.body;
-
-        console.log(body.id + body.name);
         const data = await userModel.create(body);
         res.send({data})
     } catch (e) {
@@ -54,8 +51,8 @@ const storage = multer.diskStorage({
         cb(null, '../backend/uploads')
     },
     filename: (req, file, cb) => {
-        const ext = file.originalname.split('.').pop()
-        cb(null, `${uuidv4()}.${ext}`)
+        
+        cb(null, `${file.originalname}`)
     }
 })
 

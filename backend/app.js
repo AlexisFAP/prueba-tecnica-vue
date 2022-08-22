@@ -5,6 +5,7 @@ const dbConnect = require("./config/mongo");
 const app = express();
 
 app.use(express.json());
+app.use(express.static('uploads'))
 app.use(cors())
 
 const router_user = require('./route/user.route.js')

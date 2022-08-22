@@ -7,7 +7,7 @@ const UserScheme = new mongoose.Schema(
         },
         id: {
             type:String,
-            unique:true,
+            index: {unique: true, dropDups: true}
         },
         age: {
             type:String,
